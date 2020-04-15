@@ -1,0 +1,8 @@
+#!/bin/bash
+localfile=/tmp/amied.tmp
+echo $2 | nc -N $1 124
+nc -l 124 >$localfile
+nano $localfile
+cat $localfile | nc -N $1 124
+rm $localfile
+exit 0
