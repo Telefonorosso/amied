@@ -1,0 +1,13 @@
+.key rip
+failat 21
+lab start
+set localfile `type TCP:1124`
+set socket TCP:<rip>/1124
+if exists $localfile
+  copy $localfile $socket
+else
+  echo >$localfile
+  echo "new file" >$socket
+endif
+copy TCP:1124 $localfile
+skip back start
